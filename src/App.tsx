@@ -11,11 +11,11 @@ function AppContent() {
   const [activeTab, setActiveTab] = useState<TabType>('setup');
 
   return (
-    <div className="flex min-h-screen bg-zinc-50 font-sans text-zinc-900 selection:bg-zinc-200 selection:text-zinc-900">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-bg-canvas font-space text-structural-black selection:bg-accent-primary selection:text-structural-black overflow-x-hidden">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       
-      <main className="md:ml-64 flex-1 px-4 py-8 pb-24 md:p-8 h-screen w-full transition-all overflow-y-auto overscroll-contain">
-        <div className="max-w-5xl mx-auto space-y-6 animate-in fade-in duration-500">
+      <main className="flex-1 px-4 py-8 pb-32 lg:pb-12 lg:px-12 lg:py-12 w-full lg:h-screen lg:overflow-y-auto overscroll-contain">
+        <div className="max-w-6xl mx-auto">
           {activeTab === 'setup' && <SetupTab />}
           {activeTab === 'participants' && <ParticipantsTab />}
           {activeTab === 'ledger' && <LedgerTab />}

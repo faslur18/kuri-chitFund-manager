@@ -52,25 +52,25 @@ const SetupTab = () => {
   const hasFund = fundDetails && shareSize > 0;
 
   return (
-    <div className="space-y-6 fade-in">
-      <div className="flex flex-col md:flex-row md:items-center gap-3 mb-8">
-        <div className="w-12 h-12 flex items-center justify-center bg-zinc-100 text-zinc-900 rounded-xl mb-4 md:mb-0 border border-zinc-200">
-          <Settings className="w-6 h-6" />
+    <div className="space-y-12">
+      <div className="flex flex-col md:flex-row md:items-center gap-6 mb-12">
+        <div className="w-16 h-16 flex items-center justify-center bg-accent-primary text-structural-black border-[4px] border-structural-black shadow-[4px_4px_0_0_#000000]">
+          <Settings className="w-8 h-8" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Setup / Configuration</h2>
-          <p className="text-sm text-zinc-500 mt-1">Configure or update the active Kuri chit fund details.</p>
+          <h2 className="text-4xl font-black tracking-tighter text-structural-black uppercase italic leading-none">Setup / Config</h2>
+          <p className="text-sm font-bold text-structural-black mt-2 bg-accent-pink px-2 py-0.5 inline-block border-[2px] border-structural-black shadow-[2px_2px_0_0_#000000]">Configure the active Kuri chit fund details.</p>
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl">
         {view === 'dashboard' ? (
           <>
             {!hasFund ? (
-              <div className="flex flex-col items-center justify-center py-20 md:py-32 bg-white border border-zinc-200 rounded-2xl shadow-sm px-6">
-                <Settings className="w-16 h-16 text-zinc-300 mb-6" />
-                <h3 className="text-2xl font-bold text-zinc-900 mb-2">No Active Fund</h3>
-                <p className="text-zinc-500 mb-8 max-w-sm text-center">There is currently no Kuri fund configured. Create one to start managing participants.</p>
+              <div className="flex flex-col items-center justify-center py-24 bg-white border-[4px] border-structural-black shadow-[10px_10px_0_0_#000000] px-8 text-center">
+                <Settings className="w-20 h-20 text-structural-black mb-8" />
+                <h3 className="text-3xl font-black text-structural-black mb-4 uppercase">No Active Fund</h3>
+                <p className="text-structural-black font-medium mb-10 max-w-sm">There is currently no Kuri fund configured. Create one to start managing participants.</p>
                 <button 
                   onClick={() => {
                      setFormData({
@@ -80,20 +80,20 @@ const SetupTab = () => {
                      });
                      setView('create');
                   }} 
-                  className="px-8 py-4 bg-zinc-900 text-white font-bold rounded-xl shadow-lg hover:bg-zinc-800 transition-all hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
+                  className="brutal-btn text-xl"
                 >
-                   + Add New Fund
+                   + Initialize New Fund
                 </button>
               </div>
             ) : (
-              <div className="space-y-6">
-                <div className="flex flex-col sm:flex-row justify-end sm:items-center gap-4 mb-3">
-                   <div className="flex items-center gap-3">
+              <div className="space-y-10">
+                <div className="flex flex-col sm:flex-row justify-end sm:items-center gap-4 lg:gap-6">
+                   <div className="grid grid-cols-2 sm:flex items-center gap-4 w-full sm:w-auto">
                      <button 
                        onClick={() => setShowCreateModal(true)} 
-                       className="px-5 py-2.5 bg-zinc-100 border border-zinc-200 text-zinc-900 font-bold rounded-lg hover:bg-zinc-200 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 text-sm"
+                       className="brutal-btn brutal-btn-pink text-[10px] sm:text-sm py-3 sm:py-2"
                      >
-                       + Create New Fund
+                       + NEW FUND
                      </button>
                      <button 
                        onClick={() => {
@@ -104,57 +104,57 @@ const SetupTab = () => {
                          });
                          setView('edit');
                        }} 
-                       className="px-5 py-2.5 bg-zinc-900 text-white font-bold rounded-lg hover:bg-zinc-800 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 text-sm"
+                       className="brutal-btn brutal-btn-blue text-[10px] sm:text-sm py-3 sm:py-2"
                      >
-                       Edit Details
+                       EDIT DETAILS
                      </button>
                    </div>
                 </div>
 
                 {/* Summary Card */}
-                <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-zinc-200 flex flex-col justify-center">
-                  <div className="space-y-6 text-zinc-900">
-                    <div className="bg-zinc-50 border border-zinc-200 p-8 rounded-xl text-center">
-                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 tracking-tight lowercase mb-6 truncate px-4">
+                <div className="bg-white p-6 md:p-8 lg:p-12 border-4 border-structural-black shadow-[6px_6px_0_0_#000000] lg:shadow-[12px_12px_0_0_#000000] rounded-none">
+                  <div className="space-y-8 lg:space-y-10 text-structural-black">
+                    <div className="bg-bg-canvas border-2 lg:border-[3px] border-structural-black p-6 lg:p-10 shadow-[4px_4px_0_0_#000000] lg:shadow-[6px_6px_0_0_#000000] text-center rounded-none">
+                      <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-structural-black tracking-tighter uppercase italic mb-6 lg:mb-8 leading-none">
                         {fundDetails.name}
                       </h2>
-                      <div className="w-full h-px bg-zinc-200 mb-6 max-w-sm mx-auto"></div>
-                      <p className="text-zinc-500 text-xs font-bold uppercase tracking-wider mb-2">Gross Total of Fund</p>
-                      <div className="text-4xl sm:text-5xl lg:text-6xl font-black tabular-nums tracking-tight text-zinc-800">
+                      <div className="w-full h-1 lg:h-[3px] bg-structural-black mb-6 lg:mb-8 max-w-md mx-auto"></div>
+                      <p className="text-[10px] lg:text-xs font-black uppercase tracking-widest mb-4">Gross Fund Capacity</p>
+                      <div className="text-4xl sm:text-6xl lg:text-8xl font-black tabular-nums tracking-tighter text-structural-black leading-none bg-accent-primary p-3 lg:p-4 border-2 lg:border-[3px] border-structural-black inline-block shadow-[4px_4px_0_0_#000000] lg:shadow-[6px_6px_0_0_#000000] rounded-none">
                         ₹{(shareSize * (participants.length > 0 ? participants.length : 1) * (participants.length > 0 ? participants.length : 1)).toLocaleString('en-IN')}
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      <div className="p-5 bg-zinc-50 rounded-xl border border-zinc-200 flex flex-col items-center text-center gap-3">
-                        <div className="bg-white p-3 text-zinc-600 rounded-lg shadow-sm border border-zinc-200">
-                          <Coins className="w-6 h-6" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                      <div className="p-6 lg:p-8 bg-white border-2 lg:border-[3px] border-structural-black shadow-[4px_4px_0_0_#000000] lg:shadow-[6px_6px_0_0_#000000] flex flex-col items-center text-center gap-4 rounded-none">
+                        <div className="bg-accent-pink p-3 lg:p-4 text-white border-2 border-structural-black shadow-[2px_2px_0_0_#000000] lg:shadow-[3px_3px_0_0_#000000] rounded-none">
+                          <Coins className="w-6 h-6 lg:w-8 lg:h-8" />
                         </div>
                         <div>
-                          <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Monthly Amount</p>
-                          <p className="font-bold tabular-nums text-lg">
+                          <p className="text-[10px] lg:text-xs text-structural-black font-black uppercase tracking-widest mb-1 lg:mb-2">Monthly Fee</p>
+                          <p className="font-black tabular-nums text-2xl lg:text-3xl italic leading-none">
                             ₹{shareSize.toLocaleString('en-IN')}
                           </p>
                         </div>
                       </div>
 
-                      <div className="p-5 bg-zinc-50 rounded-xl border border-zinc-200 flex flex-col items-center text-center gap-3">
-                        <div className="bg-white p-3 text-zinc-600 rounded-lg shadow-sm border border-zinc-200">
-                          <CalendarDays className="w-6 h-6" />
+                      <div className="p-6 lg:p-8 bg-white border-2 lg:border-[3px] border-structural-black shadow-[4px_4px_0_0_#000000] lg:shadow-[6px_6px_0_0_#000000] flex flex-col items-center text-center gap-4 rounded-none">
+                        <div className="bg-accent-blue p-3 lg:p-4 text-white border-2 border-structural-black shadow-[2px_2px_0_0_#000000] lg:shadow-[3px_3px_0_0_#000000] rounded-none">
+                          <CalendarDays className="w-6 h-6 lg:w-8 lg:h-8" />
                         </div>
                         <div>
-                          <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Duration</p>
-                          <p className="font-bold text-lg">{participants.length > 0 ? participants.length : 1} Months</p>
+                          <p className="text-[10px] lg:text-xs text-structural-black font-black uppercase tracking-widest mb-1 lg:mb-2">Term Duration</p>
+                          <p className="font-black text-2xl lg:text-3xl italic leading-none">{participants.length > 0 ? participants.length : 1} MONTHS</p>
                         </div>
                       </div>
 
-                      <div className="p-5 bg-zinc-50 rounded-xl border border-zinc-200 flex flex-col items-center text-center gap-3 sm:col-span-2 lg:col-span-1">
-                        <div className="bg-white p-3 text-zinc-600 rounded-lg shadow-sm border border-zinc-200">
-                          <Wallet className="w-6 h-6" />
+                      <div className="p-6 lg:p-8 bg-white border-2 lg:border-[3px] border-structural-black shadow-[4px_4px_0_0_#000000] lg:shadow-[6px_6px_0_0_#000000] flex flex-col items-center text-center gap-4 sm:col-span-2 lg:col-span-1 rounded-none">
+                        <div className="bg-accent-primary p-3 lg:p-4 text-structural-black border-2 border-structural-black shadow-[2px_2px_0_0_#000000] lg:shadow-[3px_3px_0_0_#000000] rounded-none">
+                          <Wallet className="w-6 h-6 lg:w-8 lg:h-8" />
                         </div>
                         <div>
-                          <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider mb-1">Start Date</p>
-                          <p className="font-bold text-lg">{new Date(fundDetails.startDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+                          <p className="text-[10px] lg:text-xs text-structural-black font-black uppercase tracking-widest mb-1 lg:mb-2">Launch Date</p>
+                          <p className="font-black text-xl lg:text-2xl italic leading-none">{new Date(fundDetails.startDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase()}</p>
                         </div>
                       </div>
                     </div>
@@ -164,38 +164,38 @@ const SetupTab = () => {
             )}
           </>
         ) : (
-          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-zinc-200">
-            <div className="flex justify-between items-center mb-8">
-               <h3 className="text-xl font-bold text-zinc-900">
-                 {view === 'create' ? 'Create New Fund' : 'Edit Fund Details'}
+          <div className="bg-white p-8 md:p-12 border-[4px] border-structural-black shadow-[12px_12px_0_0_#000000]">
+            <div className="flex justify-between items-start mb-12">
+               <h3 className="text-4xl font-black text-structural-black uppercase italic tracking-tighter border-b-[6px] border-accent-primary pb-2">
+                 {view === 'create' ? 'Init New Fund' : 'Edit Fund Info'}
                </h3>
                {hasFund && (
                  <button 
                    onClick={() => setView('dashboard')}
-                   className="text-sm font-bold text-zinc-500 hover:text-zinc-900 transition-colors"
+                   className="brutal-btn brutal-btn-pink text-xs px-4 py-2"
                  >
-                   Cancel
+                   CANCEL
                  </button>
                )}
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-10">
               <div>
-                <label className="block text-sm font-medium text-zinc-700 mb-1.5">Fund Name</label>
+                <label className="block text-sm font-black text-structural-black uppercase tracking-widest mb-3">Fund Identity (Name)</label>
                 <input
                   type="text"
                   name="name"
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="e.g. Friends Co-op 2026"
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-lg focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-all outline-none text-zinc-900 font-medium"
+                  placeholder="E.G. UNDERGROUND CHIT 2026"
+                  className="brutal-input text-xl font-bold uppercase"
                 />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-sm font-medium text-zinc-700 mb-1.5">
-                    Monthly Amount (₹) {view === 'edit' && <span className="text-zinc-400 font-normal">(Locked)</span>}
+                  <label className="block text-sm font-black text-structural-black uppercase tracking-widest mb-3">
+                    Monthly Stake (₹) {view === 'edit' && <span className="text-accent-pink">[LOCKED]</span>}
                   </label>
                   <input
                     type="number"
@@ -205,55 +205,57 @@ const SetupTab = () => {
                     disabled={view === 'edit'}
                     value={formData.monthlyAmount || ''}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-lg focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-all outline-none tabular-nums font-medium text-zinc-900 ${view === 'edit' ? 'opacity-50 cursor-not-allowed bg-zinc-100' : ''}`}
+                    className={`brutal-input text-xl font-bold tabular-nums ${view === 'edit' ? 'bg-bg-canvas cursor-not-allowed opacity-70' : ''}`}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-black text-structural-black uppercase tracking-widest mb-3">Deployment Date</label>
+                  <input
+                    type="date"
+                    name="startDate"
+                    required
+                    value={formData.startDate}
+                    onChange={handleChange}
+                    className="brutal-input text-xl font-bold"
                   />
                 </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-zinc-700 mb-1.5">Start Date</label>
-                <input
-                  type="date"
-                  name="startDate"
-                  required
-                  value={formData.startDate}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-lg focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition-all outline-none font-medium text-zinc-900"
-                />
-              </div>
 
               {hasParticipants && view === 'create' && (
-                <div className="bg-rose-50 border border-rose-200 text-rose-800 p-4 flex gap-3 rounded-xl text-sm mb-4">
-                  <AlertCircle className="w-5 h-5 shrink-0" />
-                  <p><strong>Warning:</strong> Creating a new fund will overwrite the existing fund logic, but current participants will be retained. Please review your setup.</p>
+                <div className="bg-accent-pink text-white p-6 border-[3px] border-structural-black shadow-[6px_6px_0_0_#000000] flex gap-4 items-center">
+                  <AlertCircle className="w-10 h-10 shrink-0" />
+                  <p className="font-black uppercase tracking-tighter text-sm italic">
+                    Caution: New fund initialization will reset current logic. Members persist.
+                  </p>
                 </div>
               )}
 
               <button
                 type="submit"
-                className="w-full bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-4 rounded-xl shadow-md transition-all flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
+                className="brutal-btn w-full text-2xl py-6"
               >
-                {view === 'create' ? 'Save & Create Fund' : 'Update Fund Details'}
+                {view === 'create' ? 'START NEW OPERATION' : 'SYNC UPDATES'}
               </button>
-              {successMsg && <p className="text-emerald-600 text-sm xl:text-base text-center font-bold mt-4">{successMsg}</p>}
+              {successMsg && <p className="bg-accent-primary p-4 border-[2px] border-structural-black text-structural-black text-center font-black uppercase tracking-widest mt-8 shadow-[4px_4px_0_0_#000000]">{successMsg}</p>}
             </form>
           </div>
         )}
       </div>
 
       {showCreateModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 fade-in">
-          <div className="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200 border border-zinc-200">
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-zinc-900 mb-2">Create New Fund?</h3>
-              <p className="text-zinc-500 text-sm mb-6">
-                Are you sure you want to create a completely new fund? The current active fund details will be overwritten, but participants will remain.
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+          <div className="bg-white border-[4px] border-structural-black w-full max-w-md shadow-[15px_15px_0_0_#FF3366]">
+            <div className="p-8">
+              <h3 className="text-3xl font-black text-structural-black uppercase italic mb-4 tracking-tighter">Reset Operation?</h3>
+              <p className="text-structural-black font-medium mb-8 uppercase tracking-tight text-sm">
+                Initiating a new fund will overwrite active parameters. Existing members will remain in the database.
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <button
                   onClick={() => setShowCreateModal(false)}
-                  className="flex-1 px-4 py-2.5 bg-zinc-100 text-zinc-700 font-bold rounded-lg hover:bg-zinc-200 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900"
+                  className="flex-1 brutal-btn brutal-btn-blue text-sm"
                 >
-                  Cancel
+                  ABORT
                 </button>
                 <button
                   onClick={() => {
@@ -265,9 +267,9 @@ const SetupTab = () => {
                     });
                     setView('create');
                   }}
-                  className="flex-1 px-4 py-2.5 bg-zinc-900 text-white font-bold rounded-lg hover:bg-zinc-800 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
+                  className="flex-1 brutal-btn text-sm"
                 >
-                  Confirm
+                  CONFIRM
                 </button>
               </div>
             </div>

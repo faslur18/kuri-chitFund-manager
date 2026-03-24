@@ -71,107 +71,105 @@ const DrawTab = () => {
   };
 
   return (
-    <div className="space-y-6 fade-in">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8">
-        <div className="w-12 h-12 flex items-center justify-center bg-zinc-100 text-zinc-900 rounded-xl border border-zinc-200 mb-2 sm:mb-0">
-          <Trophy className="w-6 h-6" />
+    <div className="space-y-12">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 lg:gap-6 mb-8 lg:mb-12">
+        <div className="w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center bg-accent-primary text-structural-black border-2 lg:border-4 border-structural-black shadow-[4px_4px_0_0_#000000] rounded-none">
+          <Trophy className="w-6 h-6 lg:w-8 lg:h-8" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Draw / Winner Selection</h2>
-          <p className="text-sm text-zinc-500 mt-1">Conduct the monthly draw and view past winners.</p>
+          <h2 className="text-3xl lg:text-4xl font-black tracking-tighter text-structural-black uppercase italic leading-none">Victory Selection</h2>
+          <p className="text-[10px] lg:text-sm font-bold text-structural-black mt-2 bg-accent-pink px-2 py-0.5 inline-block border-2 border-structural-black shadow-[2px_2px_0_0_#000000] rounded-none">Conduct the monthly draw and authorize winners.</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         
         {/* Draw Logic Section */}
-        <div className="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-zinc-200 flex flex-col items-center justify-center text-center min-h-[400px] relative overflow-hidden">
+        <div className="bg-white p-8 md:p-12 border-4 border-structural-black shadow-[15px_15px_0_0_#CCFF00] flex flex-col items-center justify-center text-center min-h-[500px] relative overflow-hidden">
           
-          <div className="absolute top-0 w-full h-1 bg-zinc-900"></div>
+          <div className="absolute top-0 w-full h-4 bg-structural-black"></div>
 
           {isFundComplete ? (
-             <div className="flex flex-col items-center w-full z-10 transition-all animate-in fade-in py-12">
-               <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-full text-emerald-500 mb-6">
-                 <Trophy className="w-16 h-16 sm:w-20 sm:h-20" />
+             <div className="flex flex-col items-center w-full z-10 py-8 lg:py-12">
+               <div className="p-8 lg:p-10 bg-accent-primary border-4 border-structural-black shadow-[6px_6px_0_0_#000000] lg:shadow-[8px_8px_0_0_#000000] text-structural-black mb-6 lg:mb-8 rounded-none">
+                 <Trophy className="w-16 h-16 sm:w-24 sm:h-24" />
                </div>
-               <h3 className="text-2xl sm:text-3xl font-black text-emerald-900 tracking-tight uppercase mb-3 text-center">
-                 Fund Completed ✨
+               <h3 className="text-3xl sm:text-5xl font-black text-structural-black tracking-tighter uppercase italic mb-4 lg:mb-6 leading-none">
+                 OPERATION COMPLETE
                </h3>
-               <p className="text-emerald-700 text-center max-w-sm px-4 text-sm font-medium">
-                 All {participants.length} months have been successfully drawn. The Kuri is now fully complete! Thank you for participating.
+               <p className="text-structural-black font-black uppercase text-center max-w-sm px-4 text-[10px] lg:text-xs tracking-widest leading-relaxed bg-accent-blue text-white p-3 lg:p-4 border-2 border-structural-black shadow-[4px_4px_0_0_#000000] rounded-none">
+                 All {participants.length} cycles have been successfully authorized. The fund is archived.
                </p>
              </div>
           ) : winnerRevealed ? (
-             <div className="animate-in zoom-in duration-500 flex flex-col items-center space-y-4 z-10 w-full px-4">
-               <div className="p-6 bg-zinc-100 border border-zinc-200 rounded-full text-zinc-900 mb-2 relative">
-                 <Sparkles className="absolute -top-2 -right-2 text-zinc-400 w-8 h-8 animate-spin-slow" />
-                 <Trophy className="w-16 h-16 sm:w-20 sm:h-20" />
+             <div className="flex flex-col items-center space-y-6 lg:space-y-8 z-10 w-full px-4 py-8">
+               <div className="p-8 lg:p-10 bg-accent-primary border-4 border-structural-black shadow-[6px_6px_0_0_#000000] lg:shadow-[10px_10px_0_0_#000000] text-structural-black mb-2 relative rounded-none">
+                 <Sparkles className="absolute -top-4 -right-4 text-accent-pink w-10 h-10 lg:w-12 lg:h-12" />
+                 <Trophy className="w-16 h-16 lg:w-24 lg:h-24" />
                </div>
-               <h3 className="text-2xl sm:text-3xl font-black text-zinc-900 tracking-tight">
-                 Winner Month {activeMonth}!
+               <h3 className="text-4xl lg:text-7xl font-black text-structural-black tracking-tighter uppercase italic leading-none">
+                 WINNER!
                </h3>
-               <p className="text-xl sm:text-2xl font-bold text-zinc-700 truncate max-w-full">
+               <p className="text-2xl sm:text-4xl lg:text-5xl font-black text-white bg-structural-black px-4 lg:px-6 py-3 lg:py-4 border-4 border-accent-primary shadow-[4px_4px_0_0_#FF3366] lg:shadow-[8px_8px_0_0_#FF3366] uppercase tracking-tighter rounded-none text-center">
                  {winnerRevealed.type === 'Individual' ? winnerRevealed.name : winnerRevealed.groupName}
                </p>
-               <div className="mt-4 px-6 py-2 bg-white rounded-full font-bold tabular-nums text-sm border border-zinc-200 text-zinc-800 shadow-sm">
-                 Won: ₹{prizeAmount.toLocaleString('en-IN')}
+               <div className="mt-4 px-6 lg:py-4 bg-accent-blue text-white font-black tabular-nums text-xl lg:text-2xl border-4 border-structural-black shadow-[4px_4px_0_0_#000000] lg:shadow-[6px_6px_0_0_#000000] italic rounded-none">
+                 PRIZE: ₹{prizeAmount.toLocaleString('en-IN')}
                </div>
-               <p className="text-[10px] uppercase font-bold text-zinc-400 mt-4 animate-pulse tracking-widest">Advancing to next month...</p>
+               <p className="text-[10px] uppercase font-black text-structural-black mt-4 lg:mt-8 tracking-[0.3em] animate-pulse">SYNCING DATA...</p>
              </div>
           ) : previousWinner && !allCaughtUpToCurrentMonth ? (
-             <div className="flex flex-col items-center w-full z-10 transition-all animate-in fade-in">
-               <div className="p-5 bg-zinc-50 border border-zinc-200 rounded-full text-zinc-300 mb-6">
-                 <Trophy className="w-12 h-12 sm:w-16 sm:h-16" />
+             <div className="flex flex-col items-center w-full z-10">
+               <div className="p-8 bg-bg-canvas border-4 border-structural-black shadow-[6px_6px_0_0_#000000] text-structural-black/20 mb-10">
+                 <Trophy className="w-20 h-20" />
                </div>
-               <h3 className="text-lg font-bold text-zinc-500 mb-2 uppercase tracking-widest">
-                 Month {activeMonth - 1} Winner
+               <h3 className="text-xs font-black text-structural-black mb-4 uppercase tracking-[0.2em] bg-accent-blue text-white px-3 py-1 border-2 border-structural-black">
+                 MONTH {activeMonth - 1} DISPATCHED
                </h3>
-               <p className="text-2xl sm:text-3xl font-black text-zinc-900 mb-3 truncate max-w-full px-4">
+               <p className="text-4xl sm:text-5xl font-black text-structural-black mb-4 uppercase italic tracking-tighter leading-none">
                  {previousWinner.winnerName}
                </p>
-               <div className="mb-8 px-4 py-1.5 bg-zinc-100/50 rounded-full font-bold tabular-nums text-xs border border-zinc-200 text-zinc-500 shadow-sm">
-                 Won: ₹{previousWinner.amountWon.toLocaleString('en-IN')}
+               <div className="mb-12 px-6 py-2 bg-white border-3 border-structural-black font-black tabular-nums text-xl text-structural-black shadow-[4px_4px_0_0_#000000]">
+                 DISBURSED: ₹{previousWinner.amountWon.toLocaleString('en-IN')}
                </div>
 
-               <div className="flex items-start gap-3 p-4 bg-zinc-50 border border-zinc-200 rounded-xl text-zinc-600 text-sm font-medium w-full max-w-xs transition-colors hover:bg-zinc-100">
-                 <div className="p-1.5 bg-white rounded-md shadow-sm border border-zinc-200 shrink-0">
-                   <AlertCircle className="w-4 h-4 text-zinc-400" />
-                 </div>
-                 <span className="leading-snug">
-                   Waiting for all participants to pay for <strong>Month {activeMonth}</strong> to unlock the {eligibleParticipants.length === 1 ? 'final prize' : 'next draw'}.
-                 </span>
+               <div className="flex items-start gap-4 p-6 bg-accent-pink text-white border-4 border-structural-black shadow-[8px_8px_0_0_#000000] w-full max-w-sm">
+                 <AlertCircle className="w-8 h-8 shrink-0" />
+                 <p className="font-black uppercase tracking-tighter text-[10px] leading-relaxed text-left">
+                   Critical: Outstanding debts detected for <strong>Month {activeMonth}</strong>. Authorization of next draw is locked until all dues are cleared.
+                 </p>
                </div>
              </div>
           ) : (
-             <div className="flex flex-col items-center w-full z-10 transition-all">
-               <Gift className="w-20 h-20 sm:w-24 sm:h-24 text-zinc-200 mb-6" />
-               <h3 className="text-2xl font-bold mb-2 text-zinc-900">
-                 {eligibleParticipants.length === 1 ? `Final Month (${activeMonth})` : `Month ${activeMonth} Draw`}
+             <div className="flex flex-col items-center w-full z-10">
+               <Gift className="w-24 h-24 sm:w-32 sm:h-32 text-bg-canvas mb-10 stroke-structural-black stroke-[1.5px]" />
+               <h3 className="text-4xl font-black mb-4 text-structural-black uppercase italic tracking-tighter">
+                 {eligibleParticipants.length === 1 ? `FINAL CYCLE (${activeMonth})` : `DRAW CYCLE ${activeMonth}`}
                </h3>
-               <p className="text-sm text-zinc-500 mb-8 max-w-sm px-4">
+               <p className="text-xs text-structural-black/60 font-black uppercase tracking-widest mb-10 max-w-sm px-4">
                  {eligibleParticipants.length === 1 
-                    ? `Only 1 participant remains. No random draw is required.` 
-                    : `${eligibleParticipants.length} out of ${participants.length} participants are eligible for this month's draw.`}
+                    ? `Single candidate remaining. Direct authorization enabled.` 
+                    : `${eligibleParticipants.length} candidates recognized for this lottery session.`}
                </p>
 
                <button
                  onClick={handleDraw}
                  disabled={isDrawing || eligibleParticipants.length === 0 || !allCaughtUpToCurrentMonth}
-                 className={`w-full max-w-xs py-4 px-8 rounded-full text-sm sm:text-base font-bold transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2 ${
-                   isDrawing ? 'bg-zinc-100 text-zinc-400 border border-zinc-200 cursor-not-allowed scale-95' 
-                   : (eligibleParticipants.length === 0 || !allCaughtUpToCurrentMonth) ? 'bg-zinc-100 text-zinc-400 border border-zinc-200 cursor-not-allowed'
-                   : 'bg-zinc-900 text-white hover:bg-zinc-800 hover:-translate-y-1 hover:shadow-lg'
+                 className={`brutal-btn w-full max-w-sm py-6 text-2xl ${
+                   (isDrawing || eligibleParticipants.length === 0 || !allCaughtUpToCurrentMonth) 
+                    ? 'opacity-50 cursor-not-allowed grayscale shadow-none transform-none' 
+                    : 'bg-accent-primary hover:bg-[#b8e600] shadow-[10px_10px_0_0_#000000]'
                  }`}
                >
                  {isDrawing 
-                    ? (eligibleParticipants.length === 1 ? 'Finalizing...' : 'Selecting...') 
-                    : (eligibleParticipants.length === 1 ? 'Award Final Prize' : 'Conduct Draw')}
+                    ? (eligibleParticipants.length === 1 ? 'PROCESSING...' : 'ROTATING...') 
+                    : (eligibleParticipants.length === 1 ? 'AUTHORIZE PRIZE' : 'INITIATE DRAW')}
                </button>
 
                {!allCaughtUpToCurrentMonth && !isDrawing && !winnerRevealed && (
-                 <div className="mt-4 flex flex-col items-center gap-2 p-3 bg-rose-50 border border-rose-100 rounded-xl text-rose-600 text-sm font-medium w-full max-w-xs animate-in slide-in-from-bottom-2 fade-in">
-                   <AlertCircle className="w-5 h-5 shrink-0" />
-                   <span className="text-center">All participants must be fully paid up to Month {activeMonth} first!</span>
+                 <div className="mt-8 flex flex-col items-center gap-4 p-4 bg-accent-pink text-white border-3 border-structural-black shadow-[6px_6px_0_0_#000000] w-full max-w-sm">
+                   <AlertCircle className="w-6 h-6 shrink-0" />
+                   <span className="font-black uppercase tracking-tighter text-[10px] text-center italic">PENDING PAYMENTS BLOCKING OPERATION</span>
                  </div>
                )}
              </div>
@@ -179,18 +177,18 @@ const DrawTab = () => {
 
           {/* Lottery Blinking Ring effect */}
           {isDrawing && !winnerRevealed && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white/95 backdrop-blur-md z-20 select-none">
-              <div className="flex flex-col items-center justify-center w-full px-6 animate-in zoom-in-95 duration-200">
-                 <div className="w-16 h-16 rounded-full border-4 border-zinc-100 border-t-zinc-900 animate-spin mb-8 shadow-sm"></div>
-                 <span className="text-zinc-500 text-xs font-bold uppercase tracking-widest block mb-4 animate-pulse">
-                   Selecting Winner...
+            <div className="absolute inset-0 flex items-center justify-center bg-accent-blue/95 z-50">
+              <div className="flex flex-col items-center justify-center w-full px-8">
+                 <div className="w-24 h-24 border-8 border-white border-t-accent-primary animate-spin mb-10 shadow-[8px_8px_0_0_#000000]"></div>
+                 <span className="text-white text-xs font-black uppercase tracking-[0.4em] block mb-6 animate-pulse">
+                   SCANNING DATABASE...
                  </span>
                  
-                 <div className="h-24 flex items-center justify-center">
-                   <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-zinc-900 tracking-tight text-center max-w-full truncate">
+                 <div className="w-full bg-white border-4 border-structural-black p-8 shadow-[12px_12px_0_0_#000000]">
+                   <h2 className="text-4xl sm:text-6xl font-black text-structural-black tracking-tighter uppercase italic text-center truncate">
                      {(() => {
                         const blinkingParticipant = eligibleParticipants.find(p => p.id === currentBlink);
-                        if (!blinkingParticipant) return '???';
+                        if (!blinkingParticipant) return '---';
                         return blinkingParticipant.type === 'Individual' ? blinkingParticipant.name : blinkingParticipant.groupName;
                      })()}
                    </h2>
@@ -201,39 +199,39 @@ const DrawTab = () => {
         </div>
 
         {/* History Section */}
-        <div className="bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden flex flex-col h-full max-h-[600px] mt-8 xl:mt-0">
-           <div className="p-4 sm:p-6 md:px-8 border-b border-zinc-100 flex flex-col sm:flex-row justify-between sm:items-center bg-zinc-50 shrink-0 gap-4">
-             <h3 className="text-lg font-semibold flex items-center gap-2 text-zinc-900">
-               <Calendar className="w-5 h-5 text-zinc-400" /> Winner History
+        <div className="bg-white border-4 border-structural-black shadow-[12px_12px_0_0_#4A4AFF] overflow-hidden flex flex-col h-full max-h-[600px]">
+           <div className="p-8 border-b-4 border-structural-black flex flex-col sm:flex-row justify-between sm:items-center bg-bg-canvas shrink-0 gap-6">
+             <h3 className="text-3xl font-black text-structural-black uppercase italic tracking-tighter flex items-center gap-4">
+               <Calendar className="w-8 h-8 text-accent-blue" /> WINNER LOG
              </h3>
-             <span className="text-xs font-bold text-zinc-600 bg-white px-3 py-1.5 rounded-full border border-zinc-200 tabular-nums self-start sm:self-auto">
-               {drawHistory.length} Winners
+             <span className="text-xs font-black text-white bg-structural-black px-4 py-2 border-2 border-structural-black shadow-[3px_3px_0_0_#CCFF00] tabular-nums uppercase tracking-widest">
+               {drawHistory.length} ENTRIES
              </span>
           </div>
 
-          <div className="overflow-y-auto w-full flex-1 p-4 sm:p-6 space-y-4">
+          <div className="overflow-y-auto w-full flex-1 p-8 space-y-8 bg-white">
             {drawHistory.length > 0 ? (
                drawHistory.map((history) => (
-                 <div key={history.id} className="p-4 border border-zinc-200 rounded-xl bg-zinc-50 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-white hover:border-zinc-300 transition-colors shadow-sm gap-4">
-                   <div className="flex items-center gap-4">
-                     <div className="hidden sm:block p-2 bg-zinc-200 text-zinc-700 rounded-lg">
-                       <Trophy className="w-5 h-5" />
+                 <div key={history.id} className="p-6 border-4 border-structural-black bg-bg-canvas flex flex-col sm:flex-row sm:items-center justify-between hover:bg-accent-primary/20 transition-all hover:translate-x-1 hover:-translate-y-1 shadow-[6px_6px_0_0_#000000] gap-6">
+                   <div className="flex items-center gap-6">
+                     <div className="hidden sm:block p-4 bg-structural-black text-white border-2 border-structural-black shadow-[2px_2px_0_0_#4A4AFF]">
+                       <Trophy className="w-6 h-6" />
                      </div>
                      <div>
-                       <p className="text-[10px] text-zinc-500 font-bold mb-0.5 uppercase tracking-wider">Month {history.monthIndex}</p>
-                       <p className="font-bold text-zinc-900 text-sm sm:text-base">{history.winnerName}</p>
+                       <p className="text-[10px] text-structural-black/50 font-black mb-1 uppercase tracking-widest">MONTH {history.monthIndex}</p>
+                       <p className="font-black text-structural-black text-2xl uppercase italic tracking-tighter leading-none">{history.winnerName}</p>
                      </div>
                    </div>
-                   <div className="sm:text-right">
-                     <p className="text-[10px] text-zinc-500 font-bold mb-0.5 uppercase tracking-wider">{history.date}</p>
-                     <p className="font-black tabular-nums text-zinc-900 text-sm sm:text-base">₹{history.amountWon.toLocaleString('en-IN')}</p>
+                   <div className="sm:text-right border-t-2 border-structural-black/10 sm:border-t-0 pt-4 sm:pt-0">
+                     <p className="text-[10px] text-structural-black/50 font-black mb-1 uppercase tracking-widest">{history.date.toUpperCase()}</p>
+                     <p className="font-black tabular-nums text-accent-blue text-2xl italic">₹{history.amountWon.toLocaleString('en-IN')}</p>
                    </div>
                  </div>
                )).reverse()
             ) : (
-               <div className="h-full flex flex-col items-center justify-center text-zinc-400 space-y-4 py-12">
-                 <Trophy className="w-12 h-12 opacity-30" />
-                 <p className="font-medium text-sm">No draws have been conducted yet.</p>
+               <div className="h-full flex flex-col items-center justify-center text-structural-black/20 space-y-6 py-24">
+                 <Trophy className="w-24 h-24 opacity-10" />
+                 <p className="font-black uppercase italic text-2xl tracking-[0.2em]">LOG IS EMPTY.</p>
                </div>
             )}
           </div>

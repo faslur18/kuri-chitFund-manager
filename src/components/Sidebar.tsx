@@ -1,4 +1,5 @@
-import { Settings, Users, FileText, Trophy, Layers } from 'lucide-react';
+import { Settings, Users, FileText, Trophy } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 export type TabType = 'setup' | 'participants' | 'ledger' | 'draw';
 
@@ -20,8 +21,8 @@ const Sidebar = ({ activeTab, setActiveTab }: SidebarProps) => {
       {/* Desktop Header */}
       <div className="hidden lg:block p-8 bg-accent-primary border-b-4 border-structural-black">
         <div className="flex items-center gap-4 mb-2">
-           <div className="w-12 h-12 bg-structural-black text-white flex items-center justify-center border-2 border-structural-black shadow-[4px_4px_0_0_#000000] rounded-none">
-             <Layers className="w-7 h-7" />
+           <div className="w-12 h-12 bg-structural-black text-white flex items-center justify-center border-2 border-structural-black shadow-[4px_4px_0_0_#000000] rounded-none overflow-hidden">
+             <img src={logo} alt="Kuri Logo" className="w-full h-full object-cover" />
            </div>
            <h1 className="text-4xl font-black text-structural-black tracking-tighter italic underline decoration-4 underline-offset-4">KURI</h1>
         </div>

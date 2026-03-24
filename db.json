@@ -1,0 +1,315 @@
+{
+  "state": {
+    "id": "main",
+    "fundDetails": {
+      "name": "mukk kuri",
+      "totalAmount": 10000,
+      "durationMonths": 10,
+      "startDate": "2026-01-01"
+    },
+    "shareSize": 1000,
+    "activeMonth": 6
+  },
+  "participants": [
+    {
+      "id": "ind-1774372499462",
+      "type": "Individual",
+      "name": "faslu",
+      "shareFraction": 1,
+      "monthlyAmountDue": 1000,
+      "paymentHistory": [
+        {
+          "monthIndex": 1,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 2,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 3,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 4,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 5,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 6,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 7,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 8,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 9,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 10,
+          "status": "Unpaid"
+        }
+      ],
+      "hasWon": true
+    },
+    {
+      "id": "grp-1774374723122",
+      "type": "Group",
+      "groupName": "team 1",
+      "members": [
+        "faslu",
+        "sabith"
+      ],
+      "shareFractionPerMember": 0.5,
+      "combinedMonthlyAmountDue": 1000,
+      "paymentHistory": [
+        {
+          "monthIndex": 1,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 2,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 3,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 4,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 5,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 6,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 7,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 8,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 9,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 10,
+          "status": "Unpaid"
+        }
+      ],
+      "hasWon": true
+    },
+    {
+      "id": "grp-1774374737968",
+      "type": "Group",
+      "groupName": "team 2",
+      "members": [
+        "ami",
+        "aju"
+      ],
+      "shareFractionPerMember": 0.5,
+      "combinedMonthlyAmountDue": 1000,
+      "paymentHistory": [
+        {
+          "monthIndex": 1,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 2,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 3,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 4,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 5,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 6,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 7,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 8,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 9,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 10,
+          "status": "Unpaid"
+        }
+      ],
+      "hasWon": true
+    },
+    {
+      "id": "ind-1774374744439",
+      "type": "Individual",
+      "name": "salman",
+      "shareFraction": 1,
+      "monthlyAmountDue": 1000,
+      "paymentHistory": [
+        {
+          "monthIndex": 1,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 2,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 3,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 4,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 5,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 6,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 7,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 8,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 9,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 10,
+          "status": "Unpaid"
+        }
+      ],
+      "hasWon": true
+    },
+    {
+      "id": "ind-1774374749048",
+      "type": "Individual",
+      "name": "razi",
+      "shareFraction": 1,
+      "monthlyAmountDue": 1000,
+      "paymentHistory": [
+        {
+          "monthIndex": 1,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 2,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 3,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 4,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 5,
+          "status": "Paid"
+        },
+        {
+          "monthIndex": 6,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 7,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 8,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 9,
+          "status": "Unpaid"
+        },
+        {
+          "monthIndex": 10,
+          "status": "Unpaid"
+        }
+      ],
+      "hasWon": true
+    }
+  ],
+  "drawHistory": [
+    {
+      "id": "draw-1774375100883",
+      "monthIndex": 1,
+      "date": "2026-03-24",
+      "winnerId": "ind-1774374744439",
+      "winnerName": "salman",
+      "amountWon": 5000
+    },
+    {
+      "id": "draw-1774375381089",
+      "monthIndex": 2,
+      "date": "2026-03-24",
+      "winnerId": "ind-1774372499462",
+      "winnerName": "faslu",
+      "amountWon": 5000
+    },
+    {
+      "id": "draw-1774375408534",
+      "monthIndex": 3,
+      "date": "2026-03-24",
+      "winnerId": "grp-1774374737968",
+      "winnerName": "team 2",
+      "amountWon": 5000
+    },
+    {
+      "id": "draw-1774375801713",
+      "monthIndex": 4,
+      "date": "2026-03-24",
+      "winnerId": "ind-1774374749048",
+      "winnerName": "razi",
+      "amountWon": 5000
+    },
+    {
+      "id": "draw-1774375849497",
+      "monthIndex": 5,
+      "date": "2026-03-24",
+      "winnerId": "grp-1774374723122",
+      "winnerName": "team 1",
+      "amountWon": 5000
+    }
+  ]
+}

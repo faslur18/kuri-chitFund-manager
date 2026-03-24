@@ -26,7 +26,7 @@ const Sidebar = ({ activeTab, setActiveTab }: SidebarProps) => {
            <h1 className="text-4xl font-black text-structural-black tracking-tighter italic underline decoration-4 underline-offset-4">KURI</h1>
         </div>
         <div className="bg-accent-pink text-white px-2 py-0.5 inline-block border-2 border-structural-black font-black text-[10px] uppercase tracking-widest shadow-[2px_2px_0_0_#000000] rounded-none">
-          CHIT_MANAGER_V1
+          CHIT_MANAGER
         </div>
       </div>
 
@@ -57,7 +57,7 @@ const Sidebar = ({ activeTab, setActiveTab }: SidebarProps) => {
 
       {/* Desktop Footer */}
       <div className="hidden lg:block p-8 mt-auto border-t-4 border-structural-black bg-accent-blue text-white font-black uppercase italic text-xs shadow-[0_-4px_0_0_#000000]">
-        &copy; {new Date().getFullYear()} KURI_LABS_SYSTEM
+        &copy; {new Date().getFullYear()} KURI_LABS
       </div>
     </nav>
   );

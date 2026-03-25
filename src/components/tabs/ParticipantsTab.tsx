@@ -3,12 +3,16 @@ import { useKuri } from '../../context/KuriContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useAuth } from '../../context/AuthContext';
 import type { IndividualParticipant, GroupParticipant } from '../../types';
-import { Users, UserPlus, Trash2, AlertCircle, ShieldAlert } from 'lucide-react';
+import { Users, UserPlus, Trash2, AlertCircle, ShieldAlert, Lock } from 'lucide-react';
 
 const ParticipantsTab = () => {
-  const { participants, addParticipant, deleteParticipant, fundDetails, shareSize } = useKuri();
+  const { participants, addParticipant, deleteParticipant, fundDetails, shareSize, drawActive, drawHistory } = useKuri();
   const { t } = useLanguage();
   const { isAdmin } = useAuth();
+  
+  const allFirstMonthPaid = participants.length > 0 && participants.every(p => p.paymentHistory.find(h => h.monthIndex === 1)?.status === 'Paid');
+  const isDrawInitiated = drawActive || drawHistory.length > 0;
+  const isMemberAdditionLocked = allFirstMonthPaid && isDrawInitiated;
   
   const [participantToDelete, setParticipantToDelete] = useState<string | null>(null);
   
@@ -118,7 +122,16 @@ const ParticipantsTab = () => {
             <UserPlus className="w-5 h-5 text-accent-pink" /> {t('members.register_new')}
           </h3>
 
-          <div className="flex bg-bg-canvas p-1.5 border-2 border-structural-black mb-6 shadow-[3px_3px_0_0_#000000] rounded-none">
+          {isMemberAdditionLocked ? (
+            <div className="flex flex-col items-center justify-center text-center p-6 bg-bg-canvas border-2 border-structural-black shadow-[4px_4px_0_0_#000000] mb-6">
+              <Lock className="w-10 h-10 text-structural-black mb-3 opacity-50" />
+              <p className="font-black uppercase tracking-tight text-sm text-structural-black">
+                {t('members.addition_locked')}
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="flex bg-bg-canvas p-1.5 border-2 border-structural-black mb-6 shadow-[3px_3px_0_0_#000000] rounded-none">
             <button
               onClick={() => { setParticipantType('Individual'); setFormError(''); }}
               className={`flex-1 py-2 text-[10px] font-black uppercase tracking-widest transition-all focus-visible:outline-none rounded-none ${
@@ -196,6 +209,8 @@ const ParticipantsTab = () => {
               {t('members.deploy_btn')}
             </button>
           </form>
+            </>
+          )}
         </div>
 
         {/* PARTICIPANTS LIST */}

@@ -63,6 +63,7 @@ export const ml = {
   'members.purge_desc': 'ഈ അംഗത്തെ പട്ടികയിൽ നിന്ന് നീക്കം ചെയ്യാൻ ആഗ്രഹിക്കുന്നുണ്ടോ? ഇത് തിരികെ ലഭിക്കില്ല.',
   'members.purge_confirm': 'നീക്കം ചെയ്യുക',
   'members.abort': 'വേണ്ട',
+  'members.addition_locked': 'രജിസ്ട്രേഷൻ പൂട്ടിയിരിക്കുന്നു: ആദ്യ മാസം പൂർത്തിയായി നറുക്കെടുപ്പ് തുടങ്ങി.',
 
   // Ledger Tab
   'ledger.title': 'രേഖാപുസ്തകം (Ledger)',

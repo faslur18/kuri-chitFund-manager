@@ -63,6 +63,7 @@ export const en = {
   'members.purge_desc': 'Are you sure you want to remove this participant from the roster? This action is irreversible.',
   'members.purge_confirm': 'CONFIRM PURGE',
   'members.abort': 'ABORT',
+  'members.addition_locked': 'Registration Locked: First month completed and draw initiated.',
 
   // Ledger Tab
   'ledger.title': 'Operation Ledger',

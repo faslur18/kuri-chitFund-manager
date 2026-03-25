@@ -36,6 +36,7 @@ export interface DrawWinner {
   winnerId: string;
   winnerName: string;
   amountWon: number;
+  isSwapped?: boolean;
 }
 
 export interface FundDetails {
@@ -51,4 +52,5 @@ export interface KuriState {
   participants: Participant[];
   drawHistory: DrawWinner[];
   activeMonth: number;
+  drawActive: boolean;
 }

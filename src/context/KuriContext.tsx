@@ -20,8 +20,10 @@ interface KuriContextType extends KuriState {
   addParticipant: (participant: Participant) => Promise<void>;
   updateParticipantStatus: (id: string, monthIndex: number, status: 'Paid' | 'Unpaid') => Promise<void>;
   conductDraw: (winnerId: string, amountWon: number, monthIndex: number) => Promise<void>;
+  swapWinner: (drawId: string, newWinnerId: string) => Promise<void>;
   setActiveMonth: (month: number) => Promise<void>;
   deleteParticipant: (id: string) => Promise<void>;
+  toggleDrawActive: () => Promise<void>;
   isLoading: boolean;
 }
 
@@ -35,6 +37,7 @@ export const KuriProvider = ({ children }: { children: ReactNode }) => {
     activeMonth: 1,
     participants: [],
     drawHistory: [],
+    drawActive: false,
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -52,7 +55,7 @@ export const KuriProvider = ({ children }: { children: ReactNode }) => {
           getDocs(query(drawHistoryRef, orderBy("monthIndex", "asc"))),
         ]);
 
-        const settingsData = settingsSnap.exists() ? settingsSnap.data() : { fundDetails: null, shareSize: 0, activeMonth: 1 };
+        const settingsData = settingsSnap.exists() ? settingsSnap.data() : { fundDetails: null, shareSize: 0, activeMonth: 1, drawActive: false };
         const participantsData = participantsSnap.docs.map(doc => doc.data() as Participant);
         const drawHistoryData = drawHistorySnap.docs.map(doc => doc.data() as DrawWinner);
         
@@ -60,6 +63,7 @@ export const KuriProvider = ({ children }: { children: ReactNode }) => {
           fundDetails: settingsData.fundDetails || null,
           shareSize: settingsData.shareSize || 0,
           activeMonth: settingsData.activeMonth || 1,
+          drawActive: settingsData.drawActive || false,
           participants: participantsData,
           drawHistory: drawHistoryData,
         });
@@ -248,6 +252,58 @@ export const KuriProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const swapWinner = async (drawId: string, newWinnerId: string) => {
+    try {
+      const draw = state.drawHistory.find(d => d.id === drawId);
+      if (!draw || draw.isSwapped) return;
+
+      const oldWinnerId = draw.winnerId;
+      const newWinner = state.participants.find(p => p.id === newWinnerId);
+      if (!newWinner) return;
+
+      const newWinnerName = newWinner.type === 'Group' ? newWinner.groupName : newWinner.name;
+
+      // 1. Mark old winner as hasWon = false
+      const oldWinnerRef = doc(db, "participants", oldWinnerId);
+      await updateDoc(oldWinnerRef, { hasWon: false });
+
+      // 2. Mark new winner as hasWon = true
+      const newWinnerRef = doc(db, "participants", newWinnerId);
+      await updateDoc(newWinnerRef, { hasWon: true });
+
+      // 3. Update draw history record
+      const drawRef = doc(db, "drawHistory", drawId);
+      await updateDoc(drawRef, {
+        winnerId: newWinnerId,
+        winnerName: newWinnerName,
+        isSwapped: true,
+        swappedFromId: oldWinnerId // Optional but good for internal tracking if we add the fields later
+      });
+
+      setState(s => ({
+        ...s,
+        participants: s.participants.map(p => {
+          if (p.id === oldWinnerId) return { ...p, hasWon: false };
+          if (p.id === newWinnerId) return { ...p, hasWon: true };
+          return p;
+        }),
+        drawHistory: s.drawHistory.map(d => d.id === drawId ? { 
+          ...d, 
+          winnerId: newWinnerId, 
+          winnerName: newWinnerName, 
+          isSwapped: true 
+        } : d)
+      }));
+    } catch (error) {
+      console.error('Error swapping winner:', error);
+    }
+  };
+
+  const toggleDrawActive = async () => {
+    const newVal = !state.drawActive;
+    await updateStateField('drawActive', newVal);
+  };
+
   return (
     <KuriContext.Provider
       value={{
@@ -257,14 +313,17 @@ export const KuriProvider = ({ children }: { children: ReactNode }) => {
         addParticipant,
         updateParticipantStatus,
         conductDraw,
+        swapWinner,
         setActiveMonth,
         deleteParticipant,
+        toggleDrawActive,
         isLoading
       }}
     >
       {isLoading ? (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-500">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-emerald-500 mb-4"></div>
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-500 text-center flex-col gap-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-accent-primary"></div>
+          <span className="font-black uppercase tracking-widest text-[10px]">Syncing Data...</span>
         </div>
       ) : children}
     </KuriContext.Provider>

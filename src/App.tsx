@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import Sidebar from './components/Sidebar';
 import type { TabType } from './components/Sidebar';
 import { KuriProvider } from './context/KuriContext';
+import { AuthProvider } from './context/AuthContext';
 import SetupTab from './components/tabs/SetupTab';
 import ParticipantsTab from './components/tabs/ParticipantsTab';
 import LedgerTab from './components/tabs/LedgerTab';
 import DrawTab from './components/tabs/DrawTab';
+import LoginPage from './components/tabs/LoginPage';
 
 function AppContent() {
   const [activeTab, setActiveTab] = useState<TabType>('setup');
@@ -20,6 +23,7 @@ function AppContent() {
           {activeTab === 'participants' && <ParticipantsTab />}
           {activeTab === 'ledger' && <LedgerTab />}
           {activeTab === 'draw' && <DrawTab />}
+          {activeTab === 'login' && <LoginPage setActiveTab={setActiveTab} />}
         </div>
       </main>
     </div>
@@ -28,9 +32,13 @@ function AppContent() {
 
 function App() {
   return (
-    <KuriProvider>
-      <AppContent />
-    </KuriProvider>
+    <LanguageProvider>
+      <AuthProvider>
+        <KuriProvider>
+          <AppContent />
+        </KuriProvider>
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 

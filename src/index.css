@@ -3,11 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
 
 @theme {
-  --color-bg-canvas: #F4F4F0;
-  --color-structural-black: #000000;
-  --color-accent-primary: #CCFF00;
-  --color-accent-pink: #FF3366;
-  --color-accent-blue: #4A4AFF;
+  --color-bg-canvas: #fdfaf7;
+  --color-structural-black: #1a1a1a;
+  --color-accent-primary: #ebd8c1;
+  --color-accent-pink: #af7b4c;
+  --color-accent-blue: #3e6394;
   --color-card-bg: #FFFFFF;
   
   --font-space: 'Space Grotesk', sans-serif;
@@ -16,9 +16,9 @@
 
 :root {
   --brutal-border: 4px solid #000000;
-  --brutal-shadow: 6px 6px 0px 0px #000000;
-  --brutal-shadow-sm: 4px 4px 0px 0px #000000;
-  --brutal-shadow-lg: 8px 8px 0px 0px #000000;
+  --brutal-shadow: 4px 4px 0px 0px #000000;
+  --brutal-shadow-sm: 2px 2px 0px 0px #000000;
+  --brutal-shadow-lg: 6px 6px 0px 0px #000000;
 }
 
 body {
@@ -45,27 +45,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brutal-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 10px 10px 0px 0px #000000;
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0px 0px #000000;
 }
 
 .brutal-btn {
   background-color: var(--color-accent-primary);
   border: var(--brutal-border);
   box-shadow: var(--brutal-shadow-sm);
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   font-weight: 700;
+  font-size: 0.875rem;
   text-transform: uppercase;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   transition: all 0.05s ease;
   border-radius: 0 !important;
 }
 
 .brutal-btn:active {
-  transform: translate(2px, 2px);
+  transform: translate(1px, 1px);
   box-shadow: 0px 0px 0px 0px #000000;
 }
 
@@ -80,8 +81,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .brutal-input {
   border: var(--brutal-border);
-  padding: 0.75rem;
+  padding: 0.5rem;
   font-family: var(--font-space);
+  font-size: 0.875rem;
   width: 100%;
   outline: none;
   background-color: white;
